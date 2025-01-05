@@ -1,0 +1,34 @@
+<div class="filter">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Ex. John">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select>
+      @for (status of statusList; track status) {
+        <mat-option [value]="status.value">{{status.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <section>
+    <div class="example-button-row">
+      <button mat-flat-button>Filtrar</button>
+    </div>
+  </section>
+  </form>
+</div>

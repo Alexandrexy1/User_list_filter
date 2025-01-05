@@ -1,0 +1,17 @@
+.filter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter form {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
