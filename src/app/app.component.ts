@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { usersList as usersListImported } from './data/users-list';
 import { IUser } from './interfaces/user/user.interface';
 
@@ -8,27 +8,18 @@ import { IUser } from './interfaces/user/user.interface';
   standalone: false,
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  usersList = usersListImported;
+export class AppComponent implements OnInit {
+  usersList: IUser[] = [];
+  showUserDetails = false;
 
-  userDetails: IUser = {
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    address: {
-      street: '',
-      number: 0,
-      city: '',
-      country: ''
-    },
-    date: '',
-    status: false,
-    job: ''
-  };
+  userDetails: IUser = { } as IUser;
 
-  userClickedEvent(name: string | null) {
-    const user = this.usersList.find(user => user.name === name?.trim());
+  ngOnInit(): void {
+    setTimeout(() => this.usersList = usersListImported, 2000);
+  }
+
+  userClickedEvent(user: IUser) {
     if (user) this.userDetails = user;
+    this.showUserDetails = true;
   }
 }

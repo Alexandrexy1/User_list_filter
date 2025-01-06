@@ -5,7 +5,7 @@ export interface IUser {
   email: string
   password: string
   phone: string
-  address: IAddress
+  address?: IAddress
   date: string
   status: boolean
   job: string

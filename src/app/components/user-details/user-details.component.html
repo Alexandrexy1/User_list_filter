@@ -1,28 +1,28 @@
-<section class="details" *ngIf="userDetails.name !== ''">
+<section class="details" *ngIf="userDetails">
   <h2 class="details__header">Detalhes do Usuário</h2>
   <mat-list class="details__body">
     <mat-list-item>
-      <p><span>Nome: </span> {{ userDetails.name }}</p>
+      <p><span>Nome: </span> {{ userDetails.name | dashIfEmpty }}</p>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      <p><span>Email:</span> {{ userDetails.email }}</p>
+      <p><span>Email:</span> {{ userDetails.email | dashIfEmpty }}</p>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      <p><span>Telefone:</span> {{ formatPhoneNumber(userDetails.phone) }}</p>
+      <p><span>Telefone:</span> {{ userDetails.phone | phone }}</p>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      <p><span>Endereço:</span> {{ userDetails.address.street }}, {{ userDetails.address.number}}, {{ userDetails.address.city}}</p>
+      <p><span>Endereço:</span> {{ userDetails.address| address }}</p>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      <p><span>Status: </span> {{ userDetails.status === true ? "Ativo" : "Inativo" }}</p>
+      <p><span>Status: </span> {{ userDetails.status | status }}</p>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      <p><span>Função:</span> {{ userDetails.job }} </p>
+      <p><span>Função:</span> {{ userDetails.job | dashIfEmpty }} </p>
     </mat-list-item>
   </mat-list>
 </section>

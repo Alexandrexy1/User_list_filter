@@ -9,17 +9,15 @@ import { IUser } from '../../interfaces/user/user.interface';
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent {
-  @Input("usersList") usersList: IUser[] = [];
+  @Input({ required: true }) usersList: IUser[] = [];
 
-  @Output("userClicked") userClicked = new EventEmitter<string | null>();
+  @Output("userClicked") userClicked = new EventEmitter<IUser>();
 
   displayedColumns: string[] = ['name', 'date', 'status'];
 
 
-
-  onClickUser(event: MouseEvent) {
-    const eventClicked = event.target as HTMLTableCellElement;
-    this.userClicked.emit(eventClicked.textContent);
+  onClickUser(user: IUser) {
+    this.userClicked.emit(user);
   }
 }
 

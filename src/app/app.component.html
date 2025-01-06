@@ -9,5 +9,5 @@
     (userClicked)="userClickedEvent($event)"></app-users-list>
   </div>
   <app-user-details class="right-div"
-    [userDetails]="userDetails"></app-user-details>
+    [userDetails]="userDetails" *ngIf="showUserDetails"></app-user-details>
 </div>
