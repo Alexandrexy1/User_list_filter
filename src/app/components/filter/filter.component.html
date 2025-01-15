@@ -1,15 +1,15 @@
 <div class="filter">
-  <form class="example-form">
+  <div class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Ex. John">
+      <input matInput placeholder="Ex. John" [(ngModel)]="filterOptions.name">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
+        <input matStartDate placeholder="Start date" [(ngModel)]="filterOptions.startDate">
+        <input matEndDate placeholder="End date" [(ngModel)]="filterOptions.endDate">
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -19,16 +19,16 @@
 
   <mat-form-field>
     <mat-label>Status</mat-label>
-    <mat-select>
+    <mat-select [(ngModel)]="filterOptions.status">
       @for (status of statusList; track status) {
-        <mat-option [value]="status.value">{{status.viewValue}}</mat-option>
+        <mat-option [value]="status.value">{{ status.description }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
   <section>
     <div class="example-button-row">
-      <button mat-flat-button>Filtrar</button>
+      <button mat-flat-button (click)="onFilterClick()">Filtrar</button>
     </div>
   </section>
-  </form>
+</div>
 </div>
